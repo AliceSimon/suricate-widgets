@@ -18,11 +18,24 @@ function run() {
 	var data = {};
 	var projectID = SURI_PROJECT.replaceAll("/", "%2F");
 
+  var gitlabApiUrl = WIDGET_CONFIG_GITLAB_URL + "/api/v4/projects/" + projectID;
 	data.project = JSON.parse(
-		Packages.get(WIDGET_CONFIG_GITLAB_URL + "/api/v4/projects/" + projectID, "PRIVATE-TOKEN", WIDGET_CONFIG_GITLAB_TOKEN)).name;
+    Packages.get(gitlabApiUrl, "PRIVATE-TOKEN", WIDGET_CONFIG_GITLAB_TOKEN)).name;
+  
+    var apiUrl = gitlabApiUrl + "/merge_requests?state=" + SURI_MR_STATE;
+
+    if (SURI_ASSIGNEE) {
+      apiUrl = apiUrl + "&assignee_username=" + SURI_ASSIGNEE;
+    }
+    if (SURI_REVIEWER) {
+      apiUrl = apiUrl + "&reviewer_username=" + SURI_REVIEWER;
+    }
+    if (SURI_LABEL) {
+      apiUrl = apiUrl + "&labels=" + SURI_LABEL;
+    }  
 
 	var response = JSON.parse(
-		Packages.get(WIDGET_CONFIG_GITLAB_URL + "/api/v4/projects/" + projectID + "/merge_requests?state=" + SURI_MR_STATE, "PRIVATE-TOKEN", WIDGET_CONFIG_GITLAB_TOKEN, "X-Total"));
+		Packages.get(apiUrl, "PRIVATE-TOKEN", WIDGET_CONFIG_GITLAB_TOKEN, "X-Total"));
 
 	data.numberOfMRs = response;
 	if (SURI_PREVIOUS && JSON.parse(SURI_PREVIOUS).numberOfMRs) {

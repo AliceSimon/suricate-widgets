@@ -22,3 +22,21 @@ widgetParams:
       - jsKey: merged
         value: Merged
     required: true
+  -
+    name: SURI_ASSIGNEE
+    description: 'Username of the Assignee'
+    type: TEXT
+    usageExample: 'test.data'
+    required: false
+  -
+    name: SURI_REVIEWER
+    description: 'Username of the Reviewer'
+    type: TEXT
+    usageExample: 'test.data'
+    required: false
+  -
+    name: SURI_LABEL
+    description: 'Label names separated by comma'
+    type: TEXT
+    usageExample: 'bug,feature'
+    required: false
