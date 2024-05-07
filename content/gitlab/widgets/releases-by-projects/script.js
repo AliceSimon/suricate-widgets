@@ -47,6 +47,7 @@ function run() {
 
 			releases = releases.concat(response);
 		}
+		page = 1;
 
 		// Keep releases performed after the given date
 		if (data.fromDate) {

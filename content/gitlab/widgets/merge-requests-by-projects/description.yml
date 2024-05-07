@@ -1,0 +1,6 @@
+name: Merge requests by application
+description: Display the number of merge requests by project starting from a given date
+technicalName: gitlabDisplayMergeRequests
+delay: 86400
+libraries:
+  - chart.js

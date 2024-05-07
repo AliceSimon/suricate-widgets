@@ -1,0 +1,6 @@
+name: Issues by application
+description: Display the number of issues by project starting from a given date
+technicalName: gitlabDisplayIssues
+delay: 86400
+libraries:
+  - chart.js

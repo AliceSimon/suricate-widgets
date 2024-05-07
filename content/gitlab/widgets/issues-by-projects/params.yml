@@ -1,0 +1,57 @@
+widgetParams:
+  -
+    name: SURI_ID_TYPE
+    description: 'Retrieve the type of IDs'
+    usageTooltip: 'Depending upon the selected choice, SURI_ID will be considered as a group id or project id'
+    type: COMBO
+    defaultValue: 'Project ID'
+    possibleValuesMap:
+      - jsKey: Group ID
+        value: Group ID
+      - jsKey: Project ID
+        value: Project ID
+  -
+    name: SURI_ID
+    description: 'Project IDs, group IDs or paths depending upon SURI_ID_TYPE selection, separated by a comma'
+    type: TEXT
+    usageExample: '1234,mygroup/myproject'
+    required: true
+  -
+    name: SURI_DATE
+    description: 'Retrieve the issues from a precise date'
+    usageTooltip: 'Required format is DDMMYYYY. If defined, it is not necessary to select a period. The precise date takes priority over the period.'
+    type: TEXT
+    usageExample: '31122020'
+    required: false
+  -
+    name: SURI_PERIOD
+    description: 'Retrieve the issues from a period'
+    usageTooltip: 'If defined, it is not necessary to define a precise date. The precise date takes priority over the period.'
+    type: COMBO
+    possibleValuesMap:
+      - jsKey: Year
+        value: Year
+      - jsKey: Month
+        value: Month
+      - jsKey: Week
+        value: Week
+      - jsKey: Day
+        value: Day
+    required: false
+  -
+    name: SURI_NUMBER_OF_PERIOD
+    description: 'Unit of the selected period'
+    type: NUMBER
+    usageExample: 1
+    required: false
+  -
+    name: SURI_ORDER_BY
+    description: 'Order the results by'
+    type: COMBO
+    defaultValue: 'NUMBER_OF_ISSUES'
+    possibleValuesMap:
+      - jsKey: PROJECT_NAME
+        value: Name of the projects
+      - jsKey: NUMBER_OF_ISSUES
+        value: Number of issues
+    required: true
